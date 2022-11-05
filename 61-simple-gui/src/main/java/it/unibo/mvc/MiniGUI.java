@@ -29,7 +29,7 @@ public class MiniGUI {
     private final JFrame frame = new JFrame(TITLE);
 
     /**
-     * 
+     * Creates a new {@link MiniGUI}.
      */
     public MiniGUI() {
         final JPanel canvas = new JPanel();
@@ -96,6 +96,8 @@ public class MiniGUI {
     }
 
     /**
+     * Launches the application.
+     *
      * @param args
      *            ignored
      */

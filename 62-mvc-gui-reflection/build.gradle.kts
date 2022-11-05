@@ -15,3 +15,7 @@ application {
 spotbugs {
     omitVisitors.set(listOf("FindReturnRef", "DumbMethods"))
 }
+
+tasks.javadoc {
+    isFailOnError = false
+}
