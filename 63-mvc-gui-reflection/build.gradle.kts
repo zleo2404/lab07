@@ -10,7 +10,3 @@ application {
 tasks.javadoc {
     isFailOnError = false
 }
-
-tasks.javadoc {
-    isFailOnError = false
-}
