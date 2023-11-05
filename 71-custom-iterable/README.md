@@ -1,6 +1,8 @@
 # INSTRUCTIONS
 
-## Iterable without policy
+**Ensure that all parts of the exercise are correct, not just the end of them.**
+
+## Part 1: iterable without policy
 
 1. Implement the `IterableWithPolicy<T>` interface via a generic class with a constructor that takes an array of `T` elements.
 2. Leave the `setIterationPolicy` method empty (for now).
@@ -8,7 +10,7 @@
 4. Implement the `iterator()` method so that it returns an instance of the inner class.
 5. Test the implementation by running the `TestIterablePlain` class.
 
-## Iterator with policy
+## Part 2: iterable with policy
 
 1. Add a new constructor to the newly created class that takes two arguments: an array of `T` elements and a `Predicate<T>` that will be used to filter the elements during the iteration.
 2. Modify the 1-ary constructor so that it calls the 2-ary constructor with a `Predicate<T>` that always returns `true`.
