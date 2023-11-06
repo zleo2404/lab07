@@ -1,13 +1,14 @@
 package it.unibo.inner.impl;
 
 import it.unibo.inner.api.IterableWithPolicy;
+import it.unibo.inner.api.Predicate;
 
-import java.util.function.Predicate;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
-    private final T[] elements;
+    private final List<T> elements;
     private Predicate<T> filter;
 
     /**
@@ -16,12 +17,15 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
      * @param elements the elements to iterate over.
      */
     public IterableWithPolicyImpl(T[] elements) {
-        this(elements, new Predicate<T>() {
-            @Override
-            public boolean test(T elem) {
-                return true;
+        this(
+            elements,
+            new Predicate<>() {
+                @Override
+                public boolean test(T elem) {
+                    return true;
+                }
             }
-        });
+        );
     }
 
     /**
@@ -30,7 +34,7 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
      * @param filter the filter to apply.
      */
     public IterableWithPolicyImpl(T[] elements, Predicate<T> filter) {
-        this.elements = elements;
+        this.elements = List.of(elements);
         this.filter = filter;
     }
 
@@ -60,8 +64,8 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
 
         @Override
         public boolean hasNext() {
-            while (currentIndex < elements.length) {
-                T elem = elements[currentIndex];
+            while (currentIndex < elements.size()) {
+                T elem = elements.get(currentIndex);
                 if (filter.test(elem)) {
                     return true;
                 }
@@ -73,11 +77,14 @@ public class IterableWithPolicyImpl<T> implements IterableWithPolicy<T> {
         @Override
         public T next() {
             if (hasNext()) {
-                T element = elements[currentIndex];
-                currentIndex++;
-                return element;
+                return elements.get(currentIndex++);
             }
             throw new NoSuchElementException();
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
         }
     }
 }
