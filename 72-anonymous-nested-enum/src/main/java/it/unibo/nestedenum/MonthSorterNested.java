@@ -69,7 +69,7 @@ public final class MonthSorterNested implements MonthSorter {
         }
     }
 
-    private static class SortByDays implements Comparator<String> {
+    private static final class SortByDays implements Comparator<String> {
         @Override
         public int compare(final String s1, final String s2) {
             final var m1 = Month.fromString(s1);
@@ -78,7 +78,7 @@ public final class MonthSorterNested implements MonthSorter {
         }
     }
 
-    private static class SortByMonthOrder implements Comparator<String> {
+    private static final class SortByMonthOrder implements Comparator<String> {
         @Override
         public int compare(final String s1, final String s2) {
             return Month.fromString(s1).compareTo(Month.fromString(s2));
