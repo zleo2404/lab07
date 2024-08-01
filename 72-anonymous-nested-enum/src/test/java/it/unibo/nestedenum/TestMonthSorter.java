@@ -64,7 +64,7 @@ class TestMonthSorter {
 
     private static final List<List<String>> EXPECTED_RESULTS = List.of(
         ALL_MONTHS_ORDERED,
-        transform(ALL_MONTHS_ORDERED, new Function<String, String>() {
+        transform(ALL_MONTHS_ORDERED, new Function<>() {
             @Override
             public String call(final String input) {
                 return input.substring(0, 3);
@@ -77,19 +77,19 @@ class TestMonthSorter {
                 return List.of(input, input, input);
             }
         }),
-        transform(ALL_MONTHS_ORDERED, new Function<String, String>() {
+        transform(ALL_MONTHS_ORDERED, new Function<>() {
             @Override
             public String call(final String input) {
                 return input.toUpperCase(Locale.ROOT);
             }
         }),
-        select(ALL_MONTHS_ORDERED, new Function<String, Boolean>() {
+        select(ALL_MONTHS_ORDERED, new Function<>() {
             @Override
             public Boolean call(final String input) {
                 return input.startsWith("j");
             }
         }),
-        reject(ALL_MONTHS_ORDERED, new Function<String, Boolean>() {
+        reject(ALL_MONTHS_ORDERED, new Function<>() {
             @Override
             public Boolean call(final String input) {
                 return input.endsWith("y");
@@ -104,7 +104,7 @@ class TestMonthSorter {
         final MonthSorter sorter = new MonthSorterNested();
         for (final var expected: EXPECTED_RESULTS) {
             final var expectedDays = monthsToDays(expected);
-            expectedDays.sort(new Comparator<Integer>() {
+            expectedDays.sort(new Comparator<>() {
                 @Override
                 public int compare(final Integer o1, final Integer o2) {
                     return Integer.compare(o1, o2);
@@ -146,7 +146,7 @@ class TestMonthSorter {
     }
 
     private static List<Integer> monthsToDays(final Iterable<String> input) {
-        return transform(input, new Function<String, Integer>() {
+        return transform(input, new Function<>() {
             @Override
             public Integer call(final String input) {
                 var match = MONTHLY_DAYS.get(input);

@@ -39,7 +39,7 @@ class TestFunctionalLibrary {
 
     @Test
     void testFlatten() {
-        final Function<String, List<String>> triplicator = new Function<String, List<String>>() {
+        final Function<String, List<String>> triplicator = new Function<>() {
             @Override
             public List<String> call(final String input) {
                 return List.of(input, input, input);
