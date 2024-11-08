@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.swing.plaf.basic.BasicBorders.MarginBorder;
@@ -61,10 +64,12 @@ class TestStrictBankAccount {
         try{
             assertEquals(0, bankAccount.getBalance());
             bankAccount.withdraw(mRossi.getUserID(), -100);
-            assertEquals(0, bankAccount.getBalance());
         }catch (IllegalArgumentException e)
         {
-            System.out.println(e.getMessage());
+            assertEquals(0, bankAccount.getBalance()); 
+            assertNotNull(e.getMessage());
+            assertFalse(e.getMessage().isBlank());
+            
         }
         
     }
@@ -79,7 +84,9 @@ class TestStrictBankAccount {
             assertEquals(100, bankAccount.getBalance());
             bankAccount.withdraw(mRossi.getUserID(), 150);
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            assertEquals(100, bankAccount.getBalance()); 
+            assertNotNull(e.getMessage());
+            assertFalse(e.getMessage().isBlank());
         }
         
     }

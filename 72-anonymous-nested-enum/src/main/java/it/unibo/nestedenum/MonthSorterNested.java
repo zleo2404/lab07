@@ -47,7 +47,7 @@ public final class MonthSorterNested implements MonthSorter {
                     
                 }
         
-                public static int getDays(Month m){
+                private static int getDays(Month m){
         
                     if(m.actualName.equals(NOVEMBER.name()) || m.actualName.equals(APRIL.name()) || m.actualName.equals(JUNE.name()) || m.actualName.equals(SEPTEMBER.name())) return 30;
                     if(m.actualName.equals(FEBRUARY.name())) return 28;
@@ -68,11 +68,7 @@ public final class MonthSorterNested implements MonthSorter {
                     @Override
                     public int compare(String o1, String o2) {
                        
-                            if(Month.getDays(Month.MonthFromString(o1)) > Month.getDays(Month.MonthFromString(o2))){
-                                return 1;
-                            }else if ( Month.getDays(Month.MonthFromString(o1)) == Month.getDays(Month.MonthFromString(o2))) return 0;
-                            return -1;
-
+                        return Integer.compare(Month.getDays(Month.MonthFromString(o1)), Month.getDays(Month.MonthFromString(o2)));
                                                 
             }
             
@@ -86,15 +82,7 @@ public final class MonthSorterNested implements MonthSorter {
             @Override
             public int compare(String o1, String o2) {
 
-                
-                    if(Month.MonthFromString(o1).ordinal()>Month.MonthFromString(o2).ordinal()){
-                        return 1;
-                    }else if(Month.MonthFromString(o1).ordinal()==Month.MonthFromString(o2).ordinal()){ return 0;
-                    }else{
-                        return -1;
-                    }
-                
-                
+                return Integer.compare(Month.MonthFromString(o1).ordinal(), Month.MonthFromString(o2).ordinal());
                 
             }
             

@@ -116,10 +116,11 @@ class TestMonthSorter {
                     Collections.shuffle(shallowCopy, randomGenerator);
                 }
                 assertNotEquals(expected, shallowCopy);
-                shallowCopy.sort(sorter.sortByOrder());
-                assertEquals(expected, shallowCopy);
                 shallowCopy.sort(sorter.sortByDays());
                 assertEquals(expectedDays, monthsToDays(shallowCopy));
+                shallowCopy.sort(sorter.sortByOrder());
+                assertEquals(expected, shallowCopy);
+                
             }
         }
     }
